@@ -13,6 +13,10 @@ https://digitalcommons.usu.edu/cgi/viewcontent.cgi?filename=2&article=1047&conte
 
 And extract it to the root of the cloned repository.
 
+Create a directory named 'inception_v3_history' in root.
+Create a directory named 'simple_cnn_history' in root.
+Create a directory named 'resnet50' in root.
+
 ### Installing
 
 You will need the following Python packages installed in your environment:
