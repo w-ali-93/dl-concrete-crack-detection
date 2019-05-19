@@ -10,8 +10,8 @@ import numpy as np
 import pickle
 import matplotlib.pyplot as plt
 
-perform_training = 1
-plot_learning_curve = 1
+perform_training = 0
+plot_learning_curve = 0
 evaluate_best_trained_model = 1
 
 ################## SPECIFY THE DIMENSIONS (in px.) OF INPUT IMAGES (Relevant for Training, Validation, Testing)
@@ -28,9 +28,9 @@ LEARNING_RATE = 1e-4
 OPTIMIZER = optimizers.adam(lr=LEARNING_RATE)
 
 ################## SPECIFY THE NUMBER OF TRAINING, TEST AND VALIDATION SETS FOR GRADIENT DESCENT (Only relevant to Training phase)
-N_TRAIN = 2000#10180
-N_VALID = 800#3394
-N_TEST = 800#3394
+N_TRAIN = 10180
+N_VALID =3394
+N_TEST = 3394
 
 # Create Generators
 train_datagen=ImageDataGenerator(rescale=1./255)
@@ -109,8 +109,9 @@ if plot_learning_curve:
 
                 plt.plot(epochs, accuracy, '-', color="g", label='Training accuracy')
                 plt.plot(epochs, val_acc, '-', color="r", label='Validation accuracy')
-                plt.plot(epochs, loss, '--', color="g", label='Training loss')
-                plt.plot(epochs, val_loss, '--', color="r", label='Validation loss')
+                plt.plot(epochs, loss, '--', color="blue", label='Training loss')
+                plt.plot(epochs, val_loss, '--', color="orange", label='Validation loss')
+                plt.plot(epochs, [0.82 for epoch in epochs], color="black", label='Validation accuracy threshold (0.82)' )
 
                 plt.legend()
                 plt.xlabel("Epochs")
@@ -139,7 +140,7 @@ if evaluate_best_trained_model:
                 optimizer=optimizers.adam(lr=1e-4),
                 metrics=['accuracy'])
 
-        scores = model.evaluate_generator(test_generator, 3394/BATCH_SIZE, workers=12)
+        scores = model.evaluate_generator(test_generator, N_TEST/BATCH_SIZE, workers=12)
         print("%s: %.2f%%" % (model.metrics_names[0], scores[0]))
         print("%s: %.2f%%" % (model.metrics_names[1], scores[1]))
 

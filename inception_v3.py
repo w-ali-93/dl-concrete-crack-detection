@@ -11,9 +11,9 @@ import numpy as np
 import pickle
 import matplotlib.pyplot as plt
 
-perform_training = 0
+perform_training = 1
 plot_learning_curve = 1
-evaluate_best_trained_model = 0
+evaluate_best_trained_model = 1
 
 ################## SPECIFY THE DIMENSIONS (in px.) OF INPUT IMAGES (Relevant for Training, Validation, Testing)
 TARGET_SIZE = (224, 224)
@@ -134,7 +134,7 @@ if evaluate_best_trained_model:
         # Create Model
         base_model = applications.InceptionV3(weights='imagenet', 
                                         include_top=False, 
-                                        input_shape=(224, 224,3))
+                                        input_shape=(224, 224, 3))
 
         for layer in base_model.layers[:N_NON_TRAINABLE_LAYERS]:
                 layer.trainable=False
@@ -160,7 +160,7 @@ if evaluate_best_trained_model:
         print("%s: %.2f%%" % (model.metrics_names[0], scores[0]))
         print("%s: %.2f%%" % (model.metrics_names[1], scores[1]))
 
-        y_pred_prob = model.predict_generator(test_generator, N_TEST/BATCH_SIZE, workers=12)
+        y_pred_prob = model.predict_generator(test_generator, 3394/BATCH_SIZE, workers=12)
         y_pred_classified = [1 * (x[0]>=0.5) for x in y_pred_prob]
         print('Confusion Matrix')
         print(confusion_matrix(test_generator.classes, y_pred_classified))
