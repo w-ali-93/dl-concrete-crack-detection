@@ -15,7 +15,7 @@ And extract it to the root of the cloned repository.
 
 Create a directory named 'inception_v3_history' in root.
 Create a directory named 'simple_cnn_history' in root.
-Create a directory named 'resnet50' in root.
+Create a directory named 'resnet50_history' in root.
 
 ### Installing
 
