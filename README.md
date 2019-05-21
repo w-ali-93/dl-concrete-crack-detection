@@ -32,7 +32,7 @@ numpy, pickle, keras, scikit-learn.
 ## Authors
 
 * **Syed Wajahat Ali** - *Initial work* - [w-ali-93](https://github.com/w-ali-93)
-* **Kamil Marwat** - *Contributor*
+* **Kamil Marwat** - *Contributor* - [kamilmarwat](https://github.com/kamilmarwat)
 * **Waqas Ahmad**  - *Contributor*
 
 ## Acknowledgments
